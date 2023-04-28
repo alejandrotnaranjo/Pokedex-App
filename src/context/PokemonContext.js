@@ -9,7 +9,7 @@ export const initialState = {
     page: 0,
     pokemons: [],
     total: 0,
-    loading: false, 
+    loading: false,
     notFound: false,
     searching: false,
     currentSort: sortTypes.ID
@@ -28,13 +28,11 @@ export const PokemonContext = createContext();
 
 const reducer = (state, action) => {
     switch (action.type) {
-
         case "LOAD_POKEMONS":
             return {
                 ...state,
                 loading: true
         };
-
         case actions.POKEMONS_LOADED:
             return {
                 ...state,
@@ -43,13 +41,11 @@ const reducer = (state, action) => {
                 notFound: false,
                 loading: false
         };
-
         case actions.SET_PAGE:
             return {
                 ...state,
                 page: action.page
             };
-
         case actions.SET_SEARCHING:
             return {
                 ...state,
@@ -57,7 +53,6 @@ const reducer = (state, action) => {
                 notFound: false,
                 searching: true,
             };
-
         case actions.SHOW_SEARCH_RESULTS:
             if (!action.result) {
                 return {
@@ -75,7 +70,6 @@ const reducer = (state, action) => {
                     searching: false
                 }
             }
-
         case actions.SET_SORT:
             let newPokemons = state.pokemons
             switch (action.sortType) {
@@ -87,7 +81,6 @@ const reducer = (state, action) => {
                     break
                 default: break
             }
-
     console.log({
         ...state,
         pokemons: newPokemons,
@@ -99,8 +92,8 @@ return {
     pokemons: newPokemons,
     currentSort: action.sortType
 }
-        default:
-        return state;
+    default:
+    return state;
     }
 }
 

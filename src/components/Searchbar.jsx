@@ -51,7 +51,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     flex: 1,
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    shadowColor: 'gray',
+    shadowOffset: { height: 0.5, width: 0.5 },
+    shadowOpacity: 1,
+    shadowRadius: 3
   },
   Button: {
     backgroundColor: 'transparent',

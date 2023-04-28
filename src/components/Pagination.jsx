@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     PagesInfo: {
       color: '#fff',
-      fontSize: 16,
+      fontSize: 15,
       fontWeight: 700
     },
     Button: {
@@ -43,6 +43,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: 36,
-        height: 36
+        height: 36,
+        shadowColor: 'gray',
+        shadowOffset: { height: 0.5, width: 0.5 },
+        shadowOpacity: 1,
+        shadowRadius: 2
     }
 })

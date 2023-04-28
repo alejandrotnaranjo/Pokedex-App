@@ -1,41 +1,63 @@
-import { View, Text, Image, StyleSheet } from 'react-native'
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 export default function PokemonCard(props) {
-    const {pokemon} = props
+    const { pokemon } = props
+    const navigation = useNavigation()
+    function Capitalize(name){
+        return name.charAt(0).toUpperCase() + name.slice(1);
+    }
     return (
-        <View style={ styles.PokemonCard }>
-            <View style={styles.PokemonIDSection}>
-                <Text style={styles.PokemonID}>#{pokemon.id}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("PokemonPage")}>
+            <View style={styles.CardContainer}>
+                <LinearGradient colors={['white', '#d5d5d5']} style={styles.PokemonCard}>
+                    <View style={styles.PokemonIDSection}>
+                        <Text style={styles.PokemonID}>#{pokemon.id}</Text>
+                    </View>
+                    <View>
+                        <Image style={styles.PokemonImage} src={pokemon.sprites.other['official-artwork'].front_default}/>
+                    </View>
+                    <View>
+                        <Text style={styles.PokemonName}>{Capitalize(pokemon.name)}</Text>
+                    </View>
+                </LinearGradient>
             </View>
-            <View>
-                <Image style={styles.PokemonImage} src={pokemon.sprites.other['official-artwork'].front_default}/>
-            </View>
-            <View>
-                <Text>{pokemon.name}</Text>
-            </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
+    CardContainer: {
+        shadowColor: '#ababab',
+        shadowOffset: { height: 1, width: 1 },
+        shadowOpacity: 1,
+        shadowRadius: 3
+    },
     PokemonCard: {
         display: 'flex',
-        backgroundColor: '#eee',
-        borderRadius: 8,
+        borderRadius: 10,
         flexDirection: 'column',
-        width: 128,
+        width: 118,
         height: 140,
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingVertical: 5,
+        paddingVertical: 10,
     },
-    PokemonIDSection: {
-        display: 'flex',
+    PokemonIDSection: {},
+    PokemonID: {
+        fontSize: 13,
+        marginLeft: 60,
+        color: '#666',
+        fontWeight: 400
     },
-    PokemonID: {},
     PokemonImage: {
         width: 80,
         height: 80,
     },
+    PokemonName: {
+        fontSize: 13,
+        fontWeight: 400
+    }
 })

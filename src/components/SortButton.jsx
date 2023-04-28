@@ -22,23 +22,35 @@ export default function SortButton () {
   return (
     <View>
         <View>
-            <TouchableOpacity onPress={() => setIsOpen(!isOpen)} style={styles.SortButton}>
+          <TouchableOpacity onPress={() => setIsOpen(!isOpen)} style={styles.SortButton}>
               {isOpen ? <CloseVector/> : <SortVector/>}
-            </TouchableOpacity>
+          </TouchableOpacity>
         </View>
         <View>
           <View style={(isOpen ? styles.open : styles.closed)}>
-            <View style={styles.Title}>
-              <Text>Sort By:</Text>
+            <View style={styles.TitleSection}>
+              <Text style={styles.SortTitle}>Sort by:</Text>
             </View>
-            <View style={styles.Section}>
-             <View>
-                <RadioButtonInput onChange={ onIDChange } checked={ state.currentSort === sortTypes.ID ? true : false } />
-                <Text>Number</Text>
+            <View style={styles.MenuSection}>
+              <View style={styles.ButtonSection}>
+                <RadioButtonInput
+                onChange={onIDChange}
+                checked={state.currentSort === sortTypes.ID ? true : false} 
+                buttonOuterColor="red"
+                buttonInnerColor="red"
+                buttonSize={6}
+                />
+                <Text style={styles.FilterName}>Number</Text>
               </View>
-              <View>
-                <RadioButtonInput onChange={ onNameChange } checked={ state.currentSort === sortTypes.ID ? true : false } />
-                <Text>Name</Text>
+              <View style={styles.ButtonSection}>
+                <RadioButtonInput
+                onChange={onNameChange}
+                checked={state.currentSort === sortTypes.ID ? true : false} 
+                buttonOuterColor="red"
+                buttonInnerColor="red"
+                buttonSize={6}
+                />
+                <Text style={styles.FilterName}>Name</Text>
               </View>
              </View>
           </View>
@@ -54,24 +66,59 @@ const styles = StyleSheet.create({
     height: 38,
     borderRadius: '50%',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    shadowColor: 'gray',
+    shadowOffset: { height: 0.5, width: 0.5 },
+    shadowOpacity: 1,
+    shadowRadius: 2
   },
   open: {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: '#DC0A2D',
     padding: 10,
-    borderRadius: 4,
     position: 'absolute',
-    zIndex: 7,
-    width: 100
+    width: 120,
+    right: 10,
+    borderRadius: 12,
+    shadowColor: 'gray',
+    shadowOffset: { height: 0.5, width: 0.5 },
+    shadowOpacity: 0.7,
+    shadowRadius: 2
   },
   closed: {
     display: 'none'
   },
-  Title: {},
-  Section: {
-    padding: 50,
-    backgroundColor: '#fff'
+  TitleSection: {
+    alignItems: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 20
+  },
+  SortTitle: {
+    fontWeight: 700,
+    color: '#fff',
+    fontSize: 14
+  },
+  MenuSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#fff',
+    padding: 15,
+    borderRadius: 8,
+    gap: 5,
+    shadowColor: 'gray',
+    shadowOffset: { height: 0.5, width: 0.5 },
+    shadowOpacity: 1,
+    shadowRadius: 2
+  },
+  ButtonSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: 3,
+    alignItems: 'flex-start'
+  },
+  FilterName: {
+    fontSize: 14,
+    fontWeight: 400,
   }
 })

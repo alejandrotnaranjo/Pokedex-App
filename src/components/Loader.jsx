@@ -12,9 +12,14 @@ export default function Loader() {
 const styles = StyleSheet.create({
     Loader: {
         alignItems: 'center',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     LoadingText: {
-        fontWeight: 700,
-        color: '#fff'
+        fontSize: 15,
+        color: '#fff',
+        fontWeight: 600,
+        marginTop: '50%'
     }
 })

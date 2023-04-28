@@ -21,18 +21,18 @@ export default function Pokedex() {
   };
 
   return (
-    <ScrollView style={styles.Pokedex}>
-      <View>
-        <Pagination page={ page + 1 } totalPages={ total } onLeftClick={ lastPage } onRightClick={ nextPage } />
-      </View>
-      { loading ? <Loader/> : (
-        <View style={styles.PokedexGrid}>
-          {pokemons.map((pokemon) => {
-            return <PokemonCard pokemon={pokemon} key={pokemon.name}/>
-          })}
-        </View>
-      )}
-    </ScrollView>
+    <>
+      <Pagination page={ page + 1 } totalPages={ total } onLeftClick={ lastPage } onRightClick={ nextPage } />
+      <ScrollView style={styles.Pokedex}>
+        { loading ? <Loader/> : (
+          <View style={styles.PokedexGrid}>
+            {pokemons.map((pokemon) => {
+              return <PokemonCard pokemon={pokemon} key={pokemon.name}/>
+            })}
+          </View>
+        )}
+      </ScrollView>
+    </>
   )
 }
 
@@ -49,6 +49,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     gap: 10,
     borderRadius: 8,
-    paddingVertical: 15
+    paddingVertical: 15,
   }
 })

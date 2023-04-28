@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet, ScrollView } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import Navbar from '../components/Navbar'
 import Pokedex from '../components/Pokedex'
 import NotFound from '../components/NotFound'
@@ -8,9 +8,8 @@ import { PokemonContext, actions } from '../context/PokemonContext'
 import { getPokemonData, getPokemons, searchPokemon } from '../components/API'
 
 const Homepage = () => {
-  const [state, dispatch] = React.useContext(PokemonContext);
+  const {state, dispatch} = React.useContext(PokemonContext);
   const {page, notFound, searching} = state
-
   const fetchPokemons = async () => {
     try {
       dispatch({ type: actions.LOAD_POKEMONS })
@@ -25,7 +24,6 @@ const Homepage = () => {
 
   useEffect(() => {
     if (!searching) {
-      console.log("fetching pokemons")
       fetchPokemons();
     }
   }, [page]);
@@ -44,10 +42,10 @@ const Homepage = () => {
     <View style={styles.Homepage}>
       <View>
         <Navbar/>
-        <Searchbar onSearch={ onSearch } />
+        <Searchbar onSearch={onSearch}/>
       </View>
       <View>
-        { notFound ? <NotFound/> : <Pokedex/> }
+        {notFound ? <NotFound/> : <Pokedex/>}
       </View>
     </View>
   )
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     padding: 4,
-    paddingVertical: 40
+    paddingVertical: 40,
   }
 })
 
