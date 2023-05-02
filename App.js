@@ -7,7 +7,6 @@ import Homepage from './src/screens/Homepage'
 import PokemonPage from './src/screens/PokemonPage'
 
 const Stack = createStackNavigator()
-
 export default function App(){
   return(
     <View style={styles.App}>
@@ -15,7 +14,7 @@ export default function App(){
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={Homepage} options={{title: 'Home'}}/>
-            <Stack.Screen name="PokemonPage" component={PokemonPage}/>
+            <Stack.Screen name="PokemonPage" component={PokemonPage} options={{title: 'Pokemon'}}/>
           </Stack.Navigator>
         </NavigationContainer>
       </PokemonProvider>

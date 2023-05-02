@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import { typeColor } from '../components/Colors'
 import { useRoute } from '@react-navigation/native'
-import { ChevronLeftVector } from '../assets/ChevronLeftVector'
-import { ChevronRightVector } from '../assets/ChevronRightVector'
+import ChevronLeftVector from '../assets/ChevronLeftVector'
+import ChevronRightVector from '../assets/ChevronRightVector'
 
 export default PokemonPage = () => {
 
   const [pokemon, setPokemon] = useState(null);
-  const {id} = useRoute();
-  const [currentIndex, setCurrentIndex] = useState(id);
+  const route = useRoute();
+  const [currentIndex, setCurrentIndex] = useState(route.params.id);
   const index = parseInt(currentIndex);
 
-  let url = (`https://pokeapi.co/api/v2/pokemon/${currentIndex}`);
+  let url = (`https://pokeapi.co/api/v2/pokemon/${index}`);
   
   useEffect(() => {
     fetch(url)
@@ -23,12 +23,12 @@ export default PokemonPage = () => {
       .catch((error) => {
         console.error(error)
       })
-  }, [id, url])
+  }, [])
   
   if (!pokemon) {
     return null;
   }
-  
+
   const themeColor = typeColor[pokemon.types[0].type.name];
 
   const prevPage = () => {
@@ -39,11 +39,15 @@ export default PokemonPage = () => {
     setCurrentIndex(index + 1)
   }
 
+  function Capitalize(name){
+    return name.charAt(0).toUpperCase() + name.slice(1);
+  }
+
   return(
-    <View style={styles.PokemonPage}>
+    <View style={{backgroundColor: `${themeColor}`}}>
       <View style={styles.TitleSection}>
-        <Text>{pokemon.name}</Text>
-        <Text>{pokemon.id}</Text>
+        <Text style={styles.TitleName}>{Capitalize(pokemon.name)}</Text>
+        <Text style={styles.TitleID}>#{pokemon.id}</Text>
       </View>
       <View style={styles.ImageSection}>
         <TouchableOpacity onPress={prevPage}>
@@ -57,10 +61,10 @@ export default PokemonPage = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.CardSection}>
-        <View>
+        <View style={styles.Types}>
           {pokemon.types.map(pokemon => (
-            <View style={{backgroundColor: `${typeColor[pokemon.type.name]}`}}>
-              <Text>{pokemon.type.name}</Text>
+            <View style={{backgroundColor: `${typeColor[pokemon.type.name]}`, borderRadius: 15}}>
+              <Text style={styles.TypeText} key={pokemon.name}>{pokemon.type.name}</Text>
             </View>
             )
           )}
@@ -78,9 +82,9 @@ export default PokemonPage = () => {
           <View>
             <View>
               <Image/>
-              <Text>{pokemon.weight / 10}</Text>
+              <Text>{pokemon.height / 10}</Text>
             </View>
-            <Text>Weight</Text>
+            <Text>Height</Text>
           </View>
           <Image/>
           <View>
@@ -120,8 +124,65 @@ export default PokemonPage = () => {
 }
 
 const styles = StyleSheet.create({
-  PokemonPage: {},
+  PokemonPage: {
+    height: '100%',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column' 
+  },
+  TitleSection: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 30,
+  },
+  TitleName: {
+    color: '#fff',
+    fontSize: 26,
+    fontWeight: 700
+  },
+  TitleID: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: 700
+  },
   PokemonImage: {
-    height: 200
+    height: 200,
+    width: 200
+  },
+  ImageSection: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+  CardSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: '#FFF',
+    borderRadius: 10,
+    paddingTop: 30,
+    paddingBottom: 40,
+    paddingHorizontal: 4,
+    marginHorizontal: 5,
+    alignItems: 'center'
+  },
+  Types: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 10,
+    alignItems: 'center',
+    width: '100%',
+    gap: 10
+  },
+  TypeText: {
+    fontSize: 14, 
+    color: '#FFF',
+    fontWeight: 700,
+    paddingHorizontal: 14,
+    height: 32,
   }
 })

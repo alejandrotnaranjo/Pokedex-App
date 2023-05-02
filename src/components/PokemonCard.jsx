@@ -6,11 +6,13 @@ import { useNavigation } from '@react-navigation/native'
 export default function PokemonCard(props) {
     const { pokemon } = props
     const navigation = useNavigation()
+
     function Capitalize(name){
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
+    
     return (
-        <TouchableOpacity onPress={() => navigation.navigate("PokemonPage")}>
+        <TouchableOpacity onPress={() => navigation.navigate("PokemonPage", { id: pokemon.id })}>
             <View style={styles.CardContainer}>
                 <LinearGradient colors={['white', '#d5d5d5']} style={styles.PokemonCard}>
                     <View style={styles.PokemonIDSection}>

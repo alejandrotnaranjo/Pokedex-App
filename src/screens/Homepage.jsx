@@ -7,8 +7,8 @@ import Searchbar from '../components/Searchbar'
 import { PokemonContext, actions } from '../context/PokemonContext'
 import { getPokemonData, getPokemons, searchPokemon } from '../components/API'
 
-const Homepage = () => {
-  const {state, dispatch} = React.useContext(PokemonContext);
+export default function Homepage (){
+  const [state, dispatch] = React.useContext(PokemonContext);
   const {page, notFound, searching} = state
   const fetchPokemons = async () => {
     try {
@@ -58,8 +58,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
     padding: 4,
-    paddingVertical: 40,
+    paddingVertical: 10,
   }
 })
-
-export default Homepage
