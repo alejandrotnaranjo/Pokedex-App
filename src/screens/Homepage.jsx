@@ -40,11 +40,11 @@ export default function Homepage (){
 
   return (
     <View style={styles.Homepage}>
-      <View>
+      <View style={{zIndex: 2}}>
         <Navbar/>
         <Searchbar onSearch={onSearch}/>
       </View>
-      <View>
+      <View style={{zIndex: 1}}>
         {notFound ? <NotFound/> : <Pokedex/>}
       </View>
     </View>
@@ -59,5 +59,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     padding: 4,
     paddingVertical: 10,
+    width: '100%'
   }
 })

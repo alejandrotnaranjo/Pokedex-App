@@ -14,7 +14,7 @@ export default function App(){
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="Home" component={Homepage} options={{title: 'Home'}}/>
-            <Stack.Screen name="PokemonPage" component={PokemonPage} options={{title: 'Pokemon'}}/>
+            <Stack.Screen name="PokemonPage" component={PokemonPage} options={{title: 'Pokemon page'}}/>
           </Stack.Navigator>
         </NavigationContainer>
       </PokemonProvider>

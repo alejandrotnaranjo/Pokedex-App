@@ -11,7 +11,7 @@ export default function Pagination(props) {
         <LeftVector/>
       </TouchableOpacity>
       <View>
-        <Text style={styles.PagesInfo}>{page} / {totalPages}</Text>
+        <Text style={styles.PagesInfo}>{ page } / { totalPages }</Text>
       </View>
       <TouchableOpacity style={styles.Button} onPress={ onRightClick }>
         <RightVector/>

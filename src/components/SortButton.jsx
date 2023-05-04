@@ -38,8 +38,7 @@ export default function SortButton () {
                 checked={state.currentSort === sortTypes.ID ? true : false} 
                 buttonOuterColor="red"
                 buttonInnerColor="red"
-                buttonSize={6}
-                />
+                buttonSize={5}/>
                 <Text style={styles.FilterName}>Number</Text>
               </View>
               <View style={styles.ButtonSection}>
@@ -48,8 +47,7 @@ export default function SortButton () {
                 checked={state.currentSort === sortTypes.ID ? true : false} 
                 buttonOuterColor="red"
                 buttonInnerColor="red"
-                buttonSize={6}
-                />
+                buttonSize={5}/>
                 <Text style={styles.FilterName}>Name</Text>
               </View>
              </View>
@@ -78,13 +76,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#DC0A2D',
     padding: 10,
     position: 'absolute',
-    width: 120,
+    width: 130,
     right: 10,
     borderRadius: 12,
     shadowColor: 'gray',
     shadowOffset: { height: 0.5, width: 0.5 },
     shadowOpacity: 0.7,
-    shadowRadius: 2
+    shadowRadius: 2,
   },
   closed: {
     display: 'none'
@@ -97,19 +95,20 @@ const styles = StyleSheet.create({
   SortTitle: {
     fontWeight: 700,
     color: '#fff',
-    fontSize: 14
+    fontSize: 15
   },
   MenuSection: {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: '#fff',
-    padding: 15,
+    padding: 25,
     borderRadius: 8,
     gap: 5,
     shadowColor: 'gray',
     shadowOffset: { height: 0.5, width: 0.5 },
     shadowOpacity: 1,
-    shadowRadius: 2
+    shadowRadius: 2,
+    alignItems: 'flex-start'
   },
   ButtonSection: {
     display: 'flex',
@@ -118,7 +117,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start'
   },
   FilterName: {
-    fontSize: 14,
-    fontWeight: 400,
+    fontSize: 15
   }
 })

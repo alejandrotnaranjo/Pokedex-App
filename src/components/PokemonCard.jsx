@@ -10,13 +10,22 @@ export default function PokemonCard(props) {
     function Capitalize(name){
         return name.charAt(0).toUpperCase() + name.slice(1);
     }
-    
+
+    function AddZero(){
+        if (pokemon.id < 10) {
+          return '#00' + pokemon.id
+        } else if (pokemon.id >= 10 && pokemon.id < 100) {
+            return '#0' + pokemon.id
+        }
+        return '#' + pokemon.id
+    }
+
     return (
         <TouchableOpacity onPress={() => navigation.navigate("PokemonPage", { id: pokemon.id })}>
             <View style={styles.CardContainer}>
                 <LinearGradient colors={['white', '#d5d5d5']} style={styles.PokemonCard}>
                     <View style={styles.PokemonIDSection}>
-                        <Text style={styles.PokemonID}>#{pokemon.id}</Text>
+                        <Text style={styles.PokemonID}>{AddZero(pokemon.id)}</Text>
                     </View>
                     <View>
                         <Image style={styles.PokemonImage} src={pokemon.sprites.other['official-artwork'].front_default}/>
