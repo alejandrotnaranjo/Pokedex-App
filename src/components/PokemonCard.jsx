@@ -1,10 +1,10 @@
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+import {useNavigation} from '@react-navigation/native'
 
 export default function PokemonCard(props) {
-    const { pokemon } = props
+    const {pokemon} = props
     const navigation = useNavigation()
 
     function Capitalize(name){
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         borderRadius: 10,
         flexDirection: 'column',
-        width: 118,
-        height: 140,
+        width: 110,
+        height: 135,
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingVertical: 10,

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import Navbar from '../components/Navbar'
 import Pokedex from '../components/Pokedex'
 import NotFound from '../components/NotFound'
@@ -39,7 +39,7 @@ export default function Homepage (){
   };
 
   return (
-    <View style={styles.Homepage}>
+    <ScrollView style={styles.Homepage} showsVerticalScrollIndicator={false}>
       <View style={{zIndex: 2}}>
         <Navbar/>
         <Searchbar onSearch={onSearch}/>
@@ -47,7 +47,7 @@ export default function Homepage (){
       <View style={{zIndex: 1}}>
         {notFound ? <NotFound/> : <Pokedex/>}
       </View>
-    </View>
+    </ScrollView>
   )
 }
 
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    padding: 4,
-    paddingVertical: 10,
-    width: '100%'
+    paddingHorizontal: 4,
+    width: '100%',
+    overflow: 'hidden'
   }
 })

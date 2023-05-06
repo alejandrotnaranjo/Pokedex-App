@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { PokemonProvider } from "./src/context/PokemonContext";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -9,7 +9,7 @@ import PokemonPage from './src/screens/PokemonPage'
 const Stack = createStackNavigator()
 export default function App(){
   return(
-    <View style={styles.App}>
+    <SafeAreaView style={styles.App}>
       <PokemonProvider>
         <NavigationContainer>
           <Stack.Navigator>
@@ -18,7 +18,7 @@ export default function App(){
           </Stack.Navigator>
         </NavigationContainer>
       </PokemonProvider>
-    </View>
+    </SafeAreaView>
   )
 }
 

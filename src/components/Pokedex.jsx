@@ -21,22 +21,25 @@ export default function Pokedex() {
   };
 
   return (
-    <>
-      <Pagination page={ page + 1 } totalPages={ total } onLeftClick={ lastPage } onRightClick={ nextPage } />
-      <ScrollView style={styles.Pokedex}>
-        { loading ? <Loader/> : (
+    <View style={styles.Main}>
+      <Pagination page={ page + 1 } totalPages={total} onLeftClick={lastPage} onRightClick={nextPage} />
+      <View style={styles.Pokedex}>
+        {loading ? <Loader/> : (
           <View style={styles.PokedexGrid}>
             {pokemons.map((pokemon) => {
               return <PokemonCard pokemon={pokemon} key={pokemon.name}/>
             })}
           </View>
         )}
-      </ScrollView>
-    </>
+      </View>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
+  Main: {
+    marginBottom: 50
+  },
   Pokedex: {
     width: '100%',
   },

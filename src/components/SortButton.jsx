@@ -23,7 +23,7 @@ export default function SortButton () {
     <View>
         <View>
           <TouchableOpacity onPress={() => setIsOpen(!isOpen)} style={styles.SortButton}>
-              {isOpen ? <CloseVector/> : <SortVector/>}
+            {isOpen ? <CloseVector/> : <SortVector/>}
           </TouchableOpacity>
         </View>
         <View>
@@ -38,7 +38,9 @@ export default function SortButton () {
                 checked={state.currentSort === sortTypes.ID ? true : false} 
                 buttonOuterColor="red"
                 buttonInnerColor="red"
-                buttonSize={5}/>
+                buttonSize={5}
+                buttonOuterSize={13}
+                />
                 <Text style={styles.FilterName}>Number</Text>
               </View>
               <View style={styles.ButtonSection}>
@@ -47,7 +49,9 @@ export default function SortButton () {
                 checked={state.currentSort === sortTypes.ID ? true : false} 
                 buttonOuterColor="red"
                 buttonInnerColor="red"
-                buttonSize={5}/>
+                buttonSize={5}
+                buttonOuterSize={13}
+                />
                 <Text style={styles.FilterName}>Name</Text>
               </View>
              </View>

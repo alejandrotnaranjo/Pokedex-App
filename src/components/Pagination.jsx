@@ -4,16 +4,16 @@ import LeftVector from '../assets/LeftVector'
 import RightVector from '../assets/RightVector'
 
 export default function Pagination(props) {
-  const { onLeftClick, onRightClick, page, totalPages } = props
+  const {onLeftClick, onRightClick, page, totalPages} = props;
   return (
     <View style={styles.Pagination}>
-      <TouchableOpacity style={styles.Button} onPress={ onLeftClick }>
+      <TouchableOpacity style={styles.Button} onPress={onLeftClick}>
         <LeftVector/>
       </TouchableOpacity>
       <View>
-        <Text style={styles.PagesInfo}>{ page } / { totalPages }</Text>
+        <Text style={styles.PagesInfo}>{page} / {totalPages}</Text>
       </View>
-      <TouchableOpacity style={styles.Button} onPress={ onRightClick }>
+      <TouchableOpacity style={styles.Button} onPress={onRightClick}>
         <RightVector/>
       </TouchableOpacity>
     </View>

@@ -17,7 +17,7 @@ export default PokemonPage = () => {
   const index = parseInt(currentIndex);
 
   let url = (`https://pokeapi.co/api/v2/pokemon/${index}`);
-  
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
@@ -28,44 +28,41 @@ export default PokemonPage = () => {
         console.error(error)
       })
   }, [])
-  
+
   if (!pokemon) {
     return null;
   }
-
-  const themeColor = typeColor[pokemon.types[0].type.name];
-
-  const prevPage = () => setCurrentIndex(index - 1)
-
-  const nextPage = () => setCurrentIndex(index + 1)
 
   function Capitalize(name){
     return name.charAt(0).toUpperCase() + name.slice(1);
   }
 
   function AddZero(){
-    if (pokemon.id < 10) {
-      return '#00' + pokemon.id
-    } else if (pokemon.id >= 10 && pokemon.id < 100) {
-        return '#0' + pokemon.id
+    if (pokemon.id < 10){
+      return '#00' + pokemon.id;
     }
-    return '#' + pokemon.id
+    if (pokemon.id >= 10 && pokemon.id < 100){
+      return '#0' + pokemon.id;
+    }
+    return '#' + pokemon.id;
   }
 
+  const themeColor = typeColor[pokemon.types[0].type.name];
+  
   return(
-    <ScrollView style={{backgroundColor: `${themeColor}`, height: '100%', width: '100%'}}>
+    <ScrollView style={{backgroundColor: `${themeColor}`, height: '100%', width: '100%'}} showsVerticalScrollIndicator={false}>
       <View style={styles.TitleSection}>
         <Text style={styles.TitleName}>{Capitalize(pokemon.name)}</Text>
         <Text style={styles.TitleID}>{AddZero(pokemon.id)}</Text>
       </View>
       <View style={styles.ImageSection}>
-        <TouchableOpacity onPress={prevPage}>
+        <TouchableOpacity onPress={() => setCurrentIndex(index - 1)}>
           <ChevronLeftVector/>
         </TouchableOpacity>
         <View>
           <Image style={styles.PokemonImage} src={pokemon.sprites.other["official-artwork"].front_default}/>
         </View>
-        <TouchableOpacity onPress={nextPage}>
+        <TouchableOpacity onPress={() => setCurrentIndex(index + 1)}>
           <ChevronRightVector/>
         </TouchableOpacity>
       </View>
@@ -75,8 +72,7 @@ export default PokemonPage = () => {
             <View  style={{backgroundColor: `${typeColor[pokemon.type.name]}`, borderRadius: 15}}>
               <Text style={styles.TypeText}>{Capitalize(pokemon.type.name)}</Text>
             </View>
-            )
-          )}
+            ))}
         </View>
         <Text style={{color: `${themeColor}`, fontWeight: 700, marginTop: 30, fontSize: 18}}>About</Text>
         <View style={styles.Atributes}>
@@ -108,7 +104,7 @@ export default PokemonPage = () => {
             <Text style={styles.AtributeName}>Moves</Text>
           </View>
         </View>
-        <Text style={styles.PokemonAbout}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta quas fuga sed debitis maiores veritatis dicta sequi minima ad. Error exercitationem, pariatur nobis quos sit et sapiente eaque doloribus beatae.</Text>
+        <Text style={styles.PokemonAbout}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta quas fuga sed debitis maiores veritatis dicta sequi minima ad.</Text>
         <Text style={{color: `${themeColor}`, marginTop: 25, fontWeight: 700, fontSize: 17}}>Base Stats</Text>
         <View style={styles.Stats}>
           <View style={styles.StatsTitles}>
@@ -175,7 +171,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     zIndex: 2,
-    marginTop: 20
+    marginTop: 10
   },
   CardSection: {
     display: 'flex',
@@ -252,6 +248,7 @@ const styles = StyleSheet.create({
   StatsTitles: {
     display: 'flex',
     alignItems: 'flex-end',
+    flexWrap: 'wrap',
     gap: 5,
   },
   StatsInfo: {
