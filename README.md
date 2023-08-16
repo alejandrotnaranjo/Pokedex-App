@@ -1,4 +1,4 @@
-## Pókedex App
+## My first React Native project using Expo, PokeAPI, Hooks and more...
 
 ![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-14 at 11 59 17](https://github.com/i2001atnj/Pokedex-App/assets/124210642/590176b2-2062-4e93-9ce4-82e82d3c7ddc)
 ![Simulator Screenshot - iPhone 14 Pro Max - 2023-08-14 at 11 59 23](https://github.com/i2001atnj/Pokedex-App/assets/124210642/4ae6b50b-bb86-44c2-8c8b-69d02466a3ca)
