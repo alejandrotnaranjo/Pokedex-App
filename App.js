@@ -1,31 +1,17 @@
 import React from "react";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { PokemonProvider } from "./src/context/PokemonContext";
-import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Homepage from "./src/screens/Homepage";
-import PokemonPage from "./src/screens/PokemonPage";
 import { StatusBar } from "expo-status-bar";
+import AppStack from "./navigator/AppStack";
 
-const Stack = createStackNavigator();
 export default function App() {
   return (
     <SafeAreaView style={styles.App}>
       <StatusBar style="auto" />
       <PokemonProvider>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen
-              name="Home"
-              component={Homepage}
-              options={{ title: "Home" }}
-            />
-            <Stack.Screen
-              name="PokemonPage"
-              component={PokemonPage}
-              options={{ title: "Pokemon page" }}
-            />
-          </Stack.Navigator>
+          <AppStack />
         </NavigationContainer>
       </PokemonProvider>
     </SafeAreaView>

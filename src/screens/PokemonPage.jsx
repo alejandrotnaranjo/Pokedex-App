@@ -86,11 +86,11 @@ export default PokemonPage = () => {
         <View style={styles.Types}>
           {pokemon.types.map((pokemon) => (
             <View
+              key={Math.random()}
               style={{
                 backgroundColor: `${typeColor[pokemon.type.name]}`,
                 borderRadius: 15,
               }}
-              key={Math.random()}
             >
               <Text style={styles.TypeText}>
                 {Capitalize(pokemon.type.name)}
