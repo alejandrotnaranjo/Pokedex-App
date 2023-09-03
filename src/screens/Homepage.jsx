@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import Navbar from "../components/Navbar";
 import Pokedex from "../components/Pokedex";
@@ -8,7 +8,7 @@ import { PokemonContext, actions } from "../context/PokemonContext";
 import { getPokemonData, getPokemons, searchPokemon } from "../components/API";
 
 export default function Homepage() {
-  const [state, dispatch] = React.useContext(PokemonContext);
+  const [state, dispatch] = useContext(PokemonContext);
   const { page, notFound, searching } = state;
   const fetchPokemons = async () => {
     try {

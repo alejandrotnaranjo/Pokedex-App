@@ -7,16 +7,8 @@ export default function AppStack() {
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="Home"
-        component={Homepage}
-        options={{ title: "Home" }}
-      />
-      <Stack.Screen
-        name="PokemonPage"
-        component={PokemonPage}
-        options={{ title: "Pokemon page" }}
-      />
+      <Stack.Screen name="Home" component={Homepage} />
+      <Stack.Screen name="PokemonPage" component={PokemonPage} />
     </Stack.Navigator>
   );
 }
