@@ -1,69 +1,70 @@
-import React from "react"
-import { View, TouchableOpacity, TextInput, StyleSheet, Text } from "react-native"
-import SortButton from './SortButton'
-import SearchVector from '../assets/SearchVector'
+import React from "react";
+import { View, TouchableOpacity, TextInput, StyleSheet } from "react-native";
+import SortButton from "./SortButton";
+import SearchVector from "../assets/SearchVector";
 
-export default function Searchbar (props) {
-
-  const { onSearch } = props
+export default function Searchbar(props) {
+  const { onSearch } = props;
   let search = "";
-  
-    const onChange = (e) => {
-      search = e.target.value
-      if (e.target.value.length === 0) {
-        onSearch(null);
-      } else {
-        onSearch(search)
-      }
-    };
-  
-    const onClick = async () => {
-      onSearch(search);
-    };
 
-    return (
-        <View style={styles.Searchbar}>
-            <View style={styles.Search}>
-                <TouchableOpacity onPress={onClick} style={styles.Button}>
-                  <SearchVector/>
-                </TouchableOpacity>
-                <TextInput style={styles.Input} placeholder="Search" onChangeText={onChange}/>
-            </View>
-            <>
-              <SortButton/>
-            </>
-        </View>
-  )
+  const onChange = (e) => {
+    search = e.target.value;
+    if (e.target.value.length === 0) {
+      onSearch(null);
+    } else {
+      onSearch(search);
+    }
+  };
+
+  const onClick = async () => {
+    onSearch(search);
+  };
+
+  return (
+    <View style={styles.Searchbar}>
+      <View style={styles.Search}>
+        <TouchableOpacity onPress={onClick} style={styles.Button}>
+          <SearchVector />
+        </TouchableOpacity>
+        <TextInput
+          style={styles.Input}
+          placeholder="Search"
+          onChangeText={onChange}
+        />
+      </View>
+      <SortButton />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   Searchbar: {
-    display: 'flex',
+    display: "flex",
     paddingVertical: 10,
     paddingHorizontal: 10,
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '100%',
-    gap: 10
+    alignItems: "center",
+    flexDirection: "row",
+    width: "100%",
+    gap: 10,
   },
   Search: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
     borderRadius: 16,
     flex: 1,
-    display: 'flex',
-    flexDirection: 'row',
-    shadowColor: 'gray',
+    display: "flex",
+    flexDirection: "row",
+    shadowColor: "gray",
     shadowOffset: { height: 0.5, width: 0.5 },
     shadowOpacity: 1,
-    shadowRadius: 3
+    shadowRadius: 3,
   },
   Button: {
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     marginLeft: 5,
-    padding: 10
+    padding: 10,
   },
   Input: {
     paddingLeft: 5,
-    width: '88%'
-  }
-})
+    width: "88%",
+  },
+});

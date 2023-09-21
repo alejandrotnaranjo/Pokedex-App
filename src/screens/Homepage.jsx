@@ -1,11 +1,12 @@
 import React, { useEffect, useContext } from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, StyleSheet, ScrollView, SafeAreaView } from "react-native";
 import Navbar from "../components/Navbar";
 import Pokedex from "../components/Pokedex";
 import NotFound from "../components/NotFound";
 import Searchbar from "../components/Searchbar";
 import { PokemonContext, actions } from "../context/PokemonContext";
 import { getPokemonData, getPokemons, searchPokemon } from "../components/API";
+import { StatusBar } from "expo-status-bar";
 
 export default function Homepage() {
   const [state, dispatch] = useContext(PokemonContext);
@@ -43,13 +44,18 @@ export default function Homepage() {
   };
 
   return (
-    <ScrollView style={styles.Homepage} showsVerticalScrollIndicator={false}>
-      <View style={{ zIndex: 2 }}>
-        <Navbar />
-        <Searchbar onSearch={onSearch} />
-      </View>
-      <View style={{ zIndex: 1 }}>{notFound ? <NotFound /> : <Pokedex />}</View>
-    </ScrollView>
+    <SafeAreaView style={{ backgroundColor: "#DC0A2D" }}>
+      <StatusBar style="light" />
+      <ScrollView style={styles.Homepage} showsVerticalScrollIndicator={false}>
+        <View style={{ zIndex: 2 }}>
+          <Navbar />
+          <Searchbar onSearch={onSearch} />
+        </View>
+        <View style={{ zIndex: 1 }}>
+          {notFound ? <NotFound /> : <Pokedex />}
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
