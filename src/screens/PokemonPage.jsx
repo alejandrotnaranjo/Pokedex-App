@@ -5,7 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
-  ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { typeColor } from "../components/Colors";
 import { useRoute } from "@react-navigation/native";
@@ -15,12 +15,14 @@ import WeightVector from "../assets/WeightVector";
 import HeightVector from "../assets/HeightVector";
 import StatsDivider from "../assets/StatsDivider";
 import Divider from "../assets/Divider";
+import { useNavigation } from "@react-navigation/native";
 
 export default PokemonPage = () => {
   const [pokemon, setPokemon] = useState(null);
   const route = useRoute();
   const [currentIndex, setCurrentIndex] = useState(route.params.id);
   const index = parseInt(currentIndex);
+  const navigation = useNavigation();
 
   let url = `https://pokeapi.co/api/v2/pokemon/${index}`;
 
@@ -56,7 +58,7 @@ export default PokemonPage = () => {
   const themeColor = typeColor[pokemon.types[0].type.name];
 
   return (
-    <ScrollView
+    <SafeAreaView
       style={{
         backgroundColor: `${themeColor}`,
         height: "100%",
@@ -65,6 +67,9 @@ export default PokemonPage = () => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.TitleSection}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Image source={require("../assets/ReturnVector.png")} />
+        </TouchableOpacity>
         <Text style={styles.TitleName}>{Capitalize(pokemon.name)}</Text>
         <Text style={styles.TitleID}>{AddZero(pokemon.id)}</Text>
       </View>
@@ -197,7 +202,7 @@ export default PokemonPage = () => {
           </View>
         </View>
       </View>
-    </ScrollView>
+    </SafeAreaView>
   );
 };
 
