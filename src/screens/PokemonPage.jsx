@@ -135,7 +135,7 @@ export default PokemonPage = () => {
               <Image />
               <View style={styles.Moves}>
                 {pokemon.abilities.map((pokemon) => (
-                  <Text style={styles.MovesText}>
+                  <Text key={Math.random()} style={styles.MovesText}>
                     {Capitalize(pokemon.ability.name)}
                   </Text>
                 ))}
@@ -161,7 +161,10 @@ export default PokemonPage = () => {
         <View style={styles.Stats}>
           <View style={styles.StatsTitles}>
             {pokemon.stats.map((pokemon) => (
-              <Text style={{ color: `${themeColor}`, fontWeight: 700 }}>
+              <Text
+                key={Math.random()}
+                style={{ color: `${themeColor}`, fontWeight: 700 }}
+              >
                 {Capitalize(pokemon.stat.name)}
               </Text>
             ))}
@@ -171,7 +174,7 @@ export default PokemonPage = () => {
           </View>
           <View style={styles.StatsInfo}>
             {pokemon.stats.map((pokemon) => (
-              <Text>
+              <Text key={Math.random()}>
                 {pokemon.base_stat < 100
                   ? "0" + pokemon.base_stat
                   : pokemon.base_stat}
@@ -182,6 +185,7 @@ export default PokemonPage = () => {
             <View style={styles.AnimatedProgress}>
               {pokemon.stats.map((pokemon) => (
                 <View
+                  key={Math.random()}
                   style={{
                     backgroundColor: "#EFEFEF",
                     width: 210,
